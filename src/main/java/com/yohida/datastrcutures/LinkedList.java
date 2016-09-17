@@ -1,10 +1,29 @@
 package com.yohida.datastrcutures;
 
+import java.util.Scanner;
+
 public class LinkedList {
 
 	static class Node {
 		int data;
 		Node next;
+		public Node(int data) {
+			this.data = data;
+		}
+	}
+	
+	Node add (Node head, int data){
+		Node n = new Node(data);
+		if(head == null){
+			return n;
+		}
+		
+		Node current = head;
+		while(current.next != null) {
+			current = current.next;
+		}
+		current.next = n;
+		return head;
 	}
 
 	void Print(Node head) {
@@ -21,15 +40,13 @@ public class LinkedList {
 	}
 
 	public static void main(String args[]) {
-
-		LinkedList llist = new LinkedList();
-		Node head = new Node();
-		head.data = 5;
-		head.next = new Node();
-		head.next.data = 1;
-		head.next.next = new Node();
-		head.next.next.data = 10;
-
-		llist.Print(head);
+		LinkedList l = new LinkedList();
+		Scanner scan = new Scanner(System.in);
+		Node head = l.add(null, scan.nextInt());
+		head = l.add(head, scan.nextInt());
+		head = l.add(head, scan.nextInt());
+		
+		l.Print(head);
+		scan.close();
 	}
 }
