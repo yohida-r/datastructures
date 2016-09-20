@@ -50,6 +50,22 @@ public class LinkedList {
 
 	}
 
+	Node Reverse(Node head) {
+	    if(head == null || head.next==null) {
+	        return head;
+	    }
+	    
+	    Node remaining = Reverse(head.next);
+	    
+	    Node current = remaining;
+	    while(current.next != null) {
+	        current = current.next;
+	    }
+	    current.next = head;
+	    head.next = null;
+	    return remaining;
+	}
+
 	public static void main(String args[]) {
 		LinkedList l = new LinkedList();
 		Scanner scan = new Scanner(System.in);
